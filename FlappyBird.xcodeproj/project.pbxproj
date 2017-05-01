@@ -16,6 +16,10 @@
 		2ABD093F1EB49493002850E6 /* FlappyBirdUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABD093E1EB49493002850E6 /* FlappyBirdUITests.swift */; };
 		2ABD094E1EB49520002850E6 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABD094D1EB49520002850E6 /* SpriteKit.framework */; };
 		2ABD09501EB49839002850E6 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABD094F1EB49839002850E6 /* GameScene.swift */; };
+		2ACCA5E41EB7468800655D94 /* crrect_answer1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2ACCA5E31EB7468800655D94 /* crrect_answer1.mp3 */; };
+		2ACCA5E61EB749B200655D94 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ACCA5E51EB749B200655D94 /* AudioToolbox.framework */; };
+		2ACCA5E81EB7543600655D94 /* crrect_answer3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2ACCA5E71EB7543600655D94 /* crrect_answer3.mp3 */; };
+		2ACCA5EA1EB7563500655D94 /* crrect_answer2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2ACCA5E91EB7563500655D94 /* crrect_answer2.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,10 @@
 		2ABD09401EB49493002850E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2ABD094D1EB49520002850E6 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		2ABD094F1EB49839002850E6 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		2ACCA5E31EB7468800655D94 /* crrect_answer1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = crrect_answer1.mp3; sourceTree = "<group>"; };
+		2ACCA5E51EB749B200655D94 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		2ACCA5E71EB7543600655D94 /* crrect_answer3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = crrect_answer3.mp3; sourceTree = "<group>"; };
+		2ACCA5E91EB7563500655D94 /* crrect_answer2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = crrect_answer2.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ACCA5E61EB749B200655D94 /* AudioToolbox.framework in Frameworks */,
 				2ABD094E1EB49520002850E6 /* SpriteKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,6 +96,9 @@
 				2ABD093D1EB49493002850E6 /* FlappyBirdUITests */,
 				2ABD091C1EB49493002850E6 /* Products */,
 				2ABD094C1EB49520002850E6 /* Frameworks */,
+				2ACCA5E31EB7468800655D94 /* crrect_answer1.mp3 */,
+				2ACCA5E71EB7543600655D94 /* crrect_answer3.mp3 */,
+				2ACCA5E91EB7563500655D94 /* crrect_answer2.mp3 */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,6 +147,7 @@
 		2ABD094C1EB49520002850E6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2ACCA5E51EB749B200655D94 /* AudioToolbox.framework */,
 				2ABD094D1EB49520002850E6 /* SpriteKit.framework */,
 			);
 			name = Frameworks;
@@ -252,7 +265,10 @@
 			files = (
 				2ABD09291EB49493002850E6 /* LaunchScreen.storyboard in Resources */,
 				2ABD09261EB49493002850E6 /* Assets.xcassets in Resources */,
+				2ACCA5E81EB7543600655D94 /* crrect_answer3.mp3 in Resources */,
 				2ABD09241EB49493002850E6 /* Main.storyboard in Resources */,
+				2ACCA5EA1EB7563500655D94 /* crrect_answer2.mp3 in Resources */,
+				2ACCA5E41EB7468800655D94 /* crrect_answer1.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,6 +546,7 @@
 				2ABD09451EB49493002850E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2ABD09461EB49493002850E6 /* Build configuration list for PBXNativeTarget "FlappyBirdTests" */ = {
 			isa = XCConfigurationList;
@@ -538,6 +555,7 @@
 				2ABD09481EB49493002850E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2ABD09491EB49493002850E6 /* Build configuration list for PBXNativeTarget "FlappyBirdUITests" */ = {
 			isa = XCConfigurationList;
@@ -546,6 +564,7 @@
 				2ABD094B1EB49493002850E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

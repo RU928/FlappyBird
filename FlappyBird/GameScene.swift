@@ -9,11 +9,16 @@
 import SpriteKit
 
 
+
 class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */{
     var scrollNode:SKNode!
     var wallNode:SKNode!    // 追加
     var bird:SKSpriteNode!// 追加
     var itemNode:SKNode!
+    
+    var soundAction:SKAction!
+    var soundAction1:SKAction!
+    var soundAction2:SKAction!
     
     // 衝突判定カテゴリー ↓追加
     let birdCategory: UInt32 = 1 << 0       // 0...00001
@@ -51,6 +56,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */{
         score = 0
         scoreLabelNode.text = String("Score:\(score)")    // ←追加
         itemScore = 0
+        itemScoreLabelNode.text = String("ItemScore:\(itemScore)")
         
         bird.position = CGPoint(x: self.frame.size.width * 0.2, y:self.frame.size.height * 0.7)
         bird.physicsBody?.velocity = CGVector.zero
@@ -66,6 +72,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */{
     
     // SKView上にシーンが表示されたときに呼ばれるメソッド
     override func didMove(to view: SKView) {
+        
+        //効果音設定
+        soundAction = SKAction.playSoundFileNamed("crrect_answer1.mp3", waitForCompletion: false)
+        soundAction1 = SKAction.playSoundFileNamed("crrect_answer3.mp3", waitForCompletion: false)
+        soundAction2 = SKAction.playSoundFileNamed("crrect_answer2.mp3", waitForCompletion: false)
+
         
         // 重力を設定
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -4.0)    // ←追加
@@ -311,8 +323,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */{
         let itemTexture = SKTexture(imageNamed: "egg")
         itemTexture.filteringMode = SKTextureFilteringMode.linear
         
-        let itemMoveDistance = (frame.size.width + itemTexture.size().width)
-        let itemMove = SKAction.moveBy(x: -itemMoveDistance, y: 0, duration: 4.0)
+        let itemMoveDistance = (frame.size.width + 170)
+        let itemMove = SKAction.moveBy(x: -itemMoveDistance, y: 0, duration: 5.2)
         let itemRemove = SKAction.removeFromParent()
         let itemAction = SKAction.repeatForever(SKAction.sequence([itemMove,itemRemove]))
         
@@ -329,7 +341,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */{
             let item_y = CGFloat(item_lowest_y + random_y)
             
             let itemEgg = SKSpriteNode(texture: itemTexture)
-            itemEgg.position = CGPoint(x: self.frame.size.width, y: item_y )
+            itemEgg.position = CGPoint(x: self.frame.size.width + 120, y: item_y )
             itemEgg.zPosition = -50.0
             
             itemEgg.physicsBody = SKPhysicsBody(circleOfRadius: itemEgg.size.height / 2.0)    // 物理演算設定
@@ -374,15 +386,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */{
                  bestScoreLabelNode.text = "Best Score:\(bestScore)"    // ←追加
                 userDefaults.set(bestScore, forKey: "BEST")
                 userDefaults.synchronize()
-            } // --- ここまで追加---
+                self.run(soundAction1)
+            }else{
+                self.run(soundAction)
+            }// --- ここまで追加---
             
         } else if (contact.bodyA.categoryBitMask & itemCategory) == itemCategory || (contact.bodyB.categoryBitMask & itemCategory) == itemCategory{
             print("itemGet")
+            //効果音
+            
             itemScore += 1
-            itemScoreLabelNode.text = "ItemScore:\(score)"
+            itemScoreLabelNode.text = "ItemScore:\(itemScore)"
             
             itemNode.removeAllChildren()
-            
             
             //bestitemscore更新か確認する
             var bestItemScore = userDefaults.integer(forKey: "BESTITEM")
@@ -391,9 +407,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */{
                 bestItemScoreLavelNode.text = "Best ItemScore:\(bestItemScore)"
                 userDefaults.set(bestItemScore, forKey: "BESTITEM")
                 userDefaults.synchronize()
+                self.run(soundAction1)
+            }else{
+                self.run(soundAction2)
             }
              //ここまで
-            
+          
         }else{
             // 壁か地面と衝突した
             print("GameOver")
@@ -452,5 +471,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate /* 追加 */{
         bestItemScoreLavelNode.text = "Best ItemScore:\(bestItemScore)"
         self.addChild(bestItemScoreLavelNode)
     }
+    
+    
 
 }
